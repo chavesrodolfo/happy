@@ -1,10 +1,10 @@
 # ![Mapa](screens/Icon.jpg) happy
-O happy tem o propósito de conectar as pessoas com lares temporários para crianças.
+O happy tem o propósito de conectar as pessoas com instituições de acolhimento.
 
 Desenvolvido com Node.js, React e Reactive Native durante a Next Level Week #3 da [RocketSeat 🚀](https://rocketseat.com.br/)
 
-![Home](screens/Home.jpg)
-![Mapa](screens/Mapa.jpg)
+![Home](screens/Home.png)
+![Mapa](screens/Mapa.png)
 
 # Web
 O projeto **web** pode ser executado através do comando `yarn start`.
