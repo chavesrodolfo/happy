@@ -39,7 +39,6 @@ export default function Orphanage() {
     useEffect(() => {
         api.get(`orphanages/${params.id}`).then(response => {
             setOrphanage(response.data);
-            console.log(response.data.open_on_weekends);
         })
     }, [params.id]);
 
@@ -54,20 +53,23 @@ export default function Orphanage() {
 
             <main>
                 <div className="orphanage-details">
-                    <img src={orphanage.images[activeImageIndex].path} alt={orphanage.name} />
+
+                    {orphanage.images.length > 0 && (
+                        <img src={orphanage.images[activeImageIndex].path} alt={orphanage.name} />
+                    )}
 
                     <div className="images">
                         {orphanage.images.map((image, index) => {
-                          return (
-                            <button 
-                                key={image.id} 
-                                className={activeImageIndex===index ? 'active':''} 
-                                type="button"
-                                onClick={()=> setActiveImageIndex(index)}
-                            >
-                                <img src={image.path} alt={orphanage.name} />
-                            </button>
-                          )
+                            return (
+                                <button
+                                    key={image.id}
+                                    className={activeImageIndex === index ? 'active' : ''}
+                                    type="button"
+                                    onClick={() => setActiveImageIndex(index)}
+                                >
+                                    <img src={image.path} alt={orphanage.name} />
+                                </button>
+                            )
                         })}
                     </div>
 
@@ -101,27 +103,27 @@ export default function Orphanage() {
 
                         <h2>Instruções para visita</h2>
                         <p>{orphanage.instructions}</p>
-                       
+
                         <div className="open-details">
                             <div className="hour">
                                 <FiClock size={32} color="#15B6D6" />
                                 Segunda à Sexta <br />
                                 {orphanage.opening_hours}
                             </div>
-                            
-                            { orphanage.open_on_weekends ? (
+
+                            {orphanage.open_on_weekends ? (
                                 <div className="open-on-weekends">
                                     <FiInfo size={32} color="#39CC83" />
                                     Atendemos <br />
                                     fim de semana
                                 </div>
                             ) : (
-                                <div className="open-on-weekends dont-open">
-                                    <FiInfo size={32} color="#ff669d" />
+                                    <div className="open-on-weekends dont-open">
+                                        <FiInfo size={32} color="#ff669d" />
                                     Não atendemos <br />
                                     fim de semana
-                                </div>
-                            )}
+                                    </div>
+                                )}
                         </div>
 
                         <button type="button" className="contact-button">
